@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowthSync - Personal Branding System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #45464d;
+            background: linear-gradient(90deg, #f8f9ff 0%, #f8f9ff 100%);
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        h1 {
+            font-size: 60px;
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+        }
+
+        h2 {
+            font-size: 48px;
+            line-height: 1.2;
+            letter-spacing: -0.48px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 30px;
+            line-height: 1.3;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(2px);
+            border-bottom: 1px solid #e5eeff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            z-index: 1000;
+            max-width: 100%;
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0f172a;
+            font-family: 'Manrope', sans-serif;
+            letter-spacing: -1.2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #45464d;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0051d5;
+        }
+
+        .nav-btn {
+            background: #0051d5;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #003ba3;
+            box-shadow: 0 10px 20px rgba(0, 81, 213, 0.2);
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 81px;
+            padding: 96px 32px 120px 32px;
+            background: linear-gradient(90deg, #f8f9ff 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 31.3px;
+        }
+
+        .hero-badge {
+            background: #dbe1ff;
+            color: #00174b;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 1.4px;
+            width: fit-content;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .hero-badge svg {
+            width: 15px;
+            height: 9px;
+        }
+
+        .hero-headline {
+            font-size: 60px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #0f172a;
+            letter-spacing: -1.5px;
+        }
+
+        .hero-headline .highlight {
+            color: #0051d5;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: #45464d;
+            max-width: 576px;
+            line-height: 1.6;
+        }
+
+        .hero-value {
+            padding: 8px 0 8px 24px;
+            border-left: 4px solid #b4c5ff;
+            font-size: 16px;
+            color: #0f172a;
+            line-height: 1.5;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 16.7px;
+        }
+
+        .btn {
+            padding: 17.5px 32px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #0051d5;
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 81, 213, 0.2), 0 4px 6px -4px rgba(0, 81, 213, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #003ba3;
+            box-shadow: 0 15px 25px -5px rgba(0, 81, 213, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #0f172a;
+            border: 2px solid #0f172a;
+        }
+
+        .btn-secondary:hover {
+            background: #f8f9ff;
+        }
+
+        .hero-right {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image {
+            background: white;
+            border: 1px solid #c6c6cd;
+            border-radius: 16px;
+            overflow: hidden;
+            padding: 9px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            width: 100%;
+            aspect-ratio: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* Achievement Section */
+        .achievements {
+            background: white;
+            border-top: 1px solid #e5eeff;
+            border-bottom: 1px solid #e5eeff;
+            padding: 121px 32px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            margin-bottom: 16px;
+        }
+
+        .section-divider {
+            width: 96px;
+            height: 6px;
+            background: #0051d5;
+            border-radius: 9999px;
+            margin: 0 auto;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 64px;
+        }
+
+        .bento-card {
+            background: #eff4ff;
+            border: 1px solid #c6c6cd;
+            border-radius: 16px;
+            padding: 33px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .bento-card.featured {
+            background: #0f172a;
+            color: white;
+            grid-column: 2;
+            grid-row: 1 / 3;
+            padding: 33px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card.featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 144px;
+            height: 164px;
+            background: url('data:image/svg+xml,<svg width="144" height="164" viewBox="0 0 144 164" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="72" cy="82" r="82" fill="%23ffffff" opacity="0.05"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .bento-icon {
+            width: 48px;
+            height: 48px;
+            background: #dbe1ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bento-card.featured .bento-icon {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .bento-title {
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-top: 16px;
+        }
+
+        .bento-desc {
+            font-size: 16px;
+            color: #45464d;
+            line-height: 1.5;
+        }
+
+        .bento-card.featured .bento-desc {
+            color: #94a3b8;
+        }
+
+        .bento-stat {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 17px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            color: #6ffbbe;
+            font-weight: 600;
+        }
+
+        .achievement-quote {
+            text-align: center;
+            font-size: 24px;
+            color: #0051d5;
+            font-style: italic;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Lead Form Section */
+        .lead-form-section {
+            background: #f8f9ff;
+            padding: 120px 32px;
+        }
+
+        .form-container {
+            background: linear-gradient(135deg, #d3e4fe 0%, #e8f0ff 100%);
+            border: 1px solid #c6c6cd;
+            border-radius: 40px;
+            padding: 64px 65px;
+            max-width: 1280px;
+            margin: 0 auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: -160px;
+            right: -160px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(0, 81, 213, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-header h2 {
+            margin-bottom: 16px;
+        }
+
+        .form-header p {
+            font-size: 16px;
+            color: #45464d;
+            max-width: 465px;
+            margin: 0 auto;
+        }
+
+        .form-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-label {
+            position: absolute;
+            top: 8.5px;
+            left: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            color: #45464d;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            z-index: 2;
+            transform: translateY(-50%);
+            background: white;
+            padding: 0 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 18px 25px;
+            background: white;
+            border: 1px solid #c6c6cd;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'Manrope', sans-serif;
+            color: #0f172a;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #0051d5;
+            box-shadow: 0 0 0 3px rgba(0, 81, 213, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #76777d;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-submit {
+            background: #0051d5;
+            color: white;
+            padding: 20px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 25px -5px rgba(0, 81, 213, 0.3), 0 8px 10px -6px rgba(0, 81, 213, 0.3);
+            margin-top: 16px;
+        }
+
+        .form-submit:hover:not(:disabled) {
+            background: #003ba3;
+            transform: translateY(-2px);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .form-footer {
+            display: flex;
+            gap: 7.99px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 36px;
+            opacity: 0.8;
+            font-size: 14px;
+            color: #45464d;
+        }
+
+        .form-message {
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d1fae5;
+            color: #065f46;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #fee2e2;
+            color: #991b1b;
+            display: block;
+        }
+
+        /* Audit Section */
+        .audit-section {
+            background: #0f172a;
+            padding: 120px 32px;
+            color: white;
+        }
+
+        .audit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 64px;
+            max-width: 1280px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .audit-left {
+            position: relative;
+        }
+
+        .audit-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 41px;
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .audit-list {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .audit-item {
+            display: flex;
+            gap: 20px;
+        }
+
+        .audit-item-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .audit-item-content h4 {
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .audit-item-content p {
+            color: #94a3b8;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .audit-quote {
+            background: rgba(111, 251, 190, 0.1);
+            border: 1px solid rgba(111, 251, 190, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            color: #6ffbbe;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .audit-right {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .audit-badge {
+            background: rgba(111, 251, 190, 0.1);
+            border: 1px solid rgba(111, 251, 190, 0.2);
+            border-radius: 8px;
+            padding: 5px 17px;
+            width: fit-content;
+            color: #6ffbbe;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .audit-headline {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-top: 14.9px;
+        }
+
+        .audit-headline .green {
+            color: #6ffbbe;
+        }
+
+        .audit-desc {
+            font-size: 20px;
+            color: #94a3b8;
+            max-width: 512px;
+            line-height: 1.4;
+        }
+
+        .btn-audit {
+            background: #6ffbbe;
+            color: #0f172a;
+            padding: 20px 48px;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            width: fit-content;
+            transition: all 0.3s ease;
+            box-shadow: 0 25px 50px -12px rgba(111, 251, 190, 0.2);
+            margin-top: 32px;
+        }
+
+        .btn-audit:hover {
+            background: #5ae5a8;
+            transform: translateY(-2px);
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background: #f8f9ff;
+            padding: 120px 32px;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: white;
+            border: 1px solid #c6c6cd;
+            border-radius: 16px;
+            padding: 41px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .review-star {
+            width: 16.667px;
+            height: 15.833px;
+        }
+
+        .review-text {
+            font-size: 16px;
+            color: #45464d;
+            line-height: 1.6;
+        }
+
+        .review-author {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding-top: 8px;
+        }
+
+        .review-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            object-fit: cover;
+            border: 2px solid rgba(0, 81, 213, 0.1);
+        }
+
+        .review-author-info h4 {
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+
+        .review-author-role {
+            font-size: 11px;
+            color: #45464d;
+            letter-spacing: 0.55px;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            border-top: 1px solid #e5eeff;
+            padding: 65px 32px 64px;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0f172a;
+            font-family: 'Manrope', sans-serif;
+            letter-spacing: -1.2px;
+        }
+
+        .footer-desc {
+            max-width: 320px;
+            font-size: 16px;
+            color: #45464d;
+            line-height: 1.5;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            align-items: flex-end;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-links a {
+            font-size: 12px;
+            color: #45464d;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #0051d5;
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            color: #76777d;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content,
+            .bento-grid,
+            .audit-grid,
+            .reviews-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-card.featured {
+                grid-column: 1;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+
+            h2 {
+                font-size: 36px;
+            }
+
+            nav {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 96px 16px 80px;
+            }
+
+            .audit-grid {
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                height: 60px;
+                padding: 0 16px;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .nav-links a {
+                display: none;
+            }
+
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .hero {
+                margin-top: 60px;
+                padding: 64px 16px 60px;
+            }
+
+            .form-container {
+                padding: 40px 24px;
+            }
+
+            .bento-grid {
+                gap: 16px;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .footer-right {
+                align-items: flex-start;
+            }
+        }
+
+        /* Loading and Message States */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-message {
+            animation: fadeIn 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">GrowthSync</div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#results">Results</a>
+            <a href="#audit">Audit</a>
+            <a href="#reviews">Reviews</a>
+        </div>
+        <button class="nav-btn" onclick="document.querySelector('#form-section').scrollIntoView({behavior: 'smooth'})">Get Started</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <span>PERSONAL BRANDING SYSTEM</span>
+                </div>
+                <h1 class="hero-headline">Turn Your LinkedIn From <span class="highlight">Invisible</span> to Influential</h1>
+                <p class="hero-desc">We don't just "optimize profiles." We build your personal brand from scratch — with strategy, content, and consistency that actually gets you seen.</p>
+                <div class="hero-value">
+                    <p>From 0 to hero on LinkedIn — without confusion, guesswork, or wasting months figuring it out alone.</p>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="document.querySelector('#form-section').scrollIntoView({behavior: 'smooth'})">Get Your Profile Audit</button>
+                    <button class="btn btn-secondary">Start Growing Today</button>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-image">
+                    <img src="https://www.figma.com/api/mcp/asset/91eb3ffd-901c-45bc-8dc5-374293a71af0" alt="LinkedIn Analytics Dashboard">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievement Section -->
+    <section id="results" class="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2>Real Growth. Real Results.</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <div class="bento-icon"></div>
+                    <h3 class="bento-title">100+</h3>
+                    <p class="bento-desc">Professionals transformed from observers to industry leaders.</p>
+                </div>
+
+                <div class="bento-card featured">
+                    <div style="opacity: 0.8; margin-bottom: 24px;">
+                        <img src="https://www.figma.com/api/mcp/asset/28ab28bc-3880-4a06-a5ff-1763db84ee66" alt="Featured stat" style="width: 40px; height: 40px;">
+                    </div>
+                    <h3 class="bento-title">Inbound Leads</h3>
+                    <p class="bento-desc">Stop chasing opportunities. Build a brand that attracts the right people while you sleep.</p>
+                    <div class="bento-stat">
+                        <span>📈</span>
+                        <span>400% Avg. Increase in Reach</span>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-icon"></div>
+                    <h3 class="bento-title">From Zero</h3>
+                    <p class="bento-desc">Personal brands built from absolute scratch into content powerhouses.</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-icon"></div>
+                    <h3 class="bento-title">Conversion</h3>
+                    <p class="bento-desc">We turn views into high-value professional conversations and opportunities.</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-icon"></div>
+                    <h3 class="bento-title">Organic Reach</h3>
+                    <p class="bento-desc">Maximize visibility without spending a single rupee on LinkedIn Ads.</p>
+                </div>
+            </div>
+            <div class="achievement-quote">
+                "This isn't luck. It's a system that works."
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Form Section -->
+    <section id="form-section" class="lead-form-section">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Let's Build Your LinkedIn Presence Together</h2>
+                <p>Tell us a bit about you — and we'll show you exactly how to grow.</p>
+            </div>
+            <form class="form-wrapper" id="auditForm">
+                <div id="formMessage" class="form-message"></div>
+                <div class="form-grid">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 00000 00000" required>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="john@executive.com" required>
+                    </div>
+                    <button type="submit" class="form-submit">Get My Growth Plan</button>
+                </div>
+                <div class="form-footer">
+                    <span>✓</span>
+                    <span>No spam. No fluff. Just actionable clarity.</span>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Audit Section -->
+    <section id="audit" class="audit-section">
+        <div class="audit-grid">
+            <div class="audit-left">
+                <div class="audit-card">
+                    <div class="audit-list">
+                        <div class="audit-item">
+                            <div class="audit-item-icon">✓</div>
+                            <div class="audit-item-content">
+                                <h4>Profile review</h4>
+                                <p>Detailed analysis of your headline, about, and experience sections to maximize first impressions.</p>
+                            </div>
+                        </div>
+                        <div class="audit-item">
+                            <div class="audit-item-icon">✓</div>
+                            <div class="audit-item-content">
+                                <h4>Content gap analysis</h4>
+                                <p>Identifying the specific topics and content formats that will win in your professional niche.</p>
+                            </div>
+                        </div>
+                        <div class="audit-item">
+                            <div class="audit-item-icon">✓</div>
+                            <div class="audit-item-content">
+                                <h4>Brand direction</h4>
+                                <p>Defining your unique executive voice and long-term positioning strategy.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="audit-quote">
+                        "Why Rupee 1? Because once you see the value, you'll know what to do next."
+                    </div>
+                </div>
+            </div>
+            <div class="audit-right">
+                <div class="audit-badge">LIMITED OFFER</div>
+                <h2 class="audit-headline" style="color: white;">Get a Complete LinkedIn Audit for <span class="green">Just Rupee 1</span></h2>
+                <p class="audit-desc">Not a sales call. A real breakdown of what's working, what's not, and what to fix in the next 24 hours.</p>
+                <a href="https://payments.cashfree.com/forms/getaudit" target="_blank" class="btn-audit">Book My Audit Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Clients Say</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">
+                        <span class="review-star">⭐</span>
+                        <span class="review-star">⭐</span>
+                        <span class="review-star">⭐</span>
+                        <span class="review-star">⭐</span>
+                        <span class="review-star">⭐</span>
+                    </div>
+                    <p class="review-text">"GrowthSync transformed my profile from a static CV into a lead-generating machine. Within 4 weeks, my post impressions jumped by 300%."</p>
+                    <div class="review-author">
+                        <img src="https://www.figma.com/api/mcp/asset/f9ad0262-a1cc-47f6-acb2-54f3fc1201b2" alt="Arjun Mehta" class="review-avatar">
+                        <div class="review-author-info">
+                            <h4>Arjun Mehta</h4>
+                            <div class="review-author-role">SaaS Founder</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">
+                        <span class="review-star">⭐</span>
+                        <span class="review-star">⭐</span>
+                        <span class="review-star">⭐</span>
+                        <span class="review-star">⭐</span>
+                        <span class="review-star">⭐</span>
+                    </div>
+                    <p class="review-text">"I finally have a content strategy that feels authentic to me. The audit alone provided more value than many courses I've paid thousands for."</p>
+                    <div class="review-author">
+                        <img src="https://www.figma.com/api/mcp/asset/67f8e314-785f-4a36-8983-8a200a1dac01" alt="Sarah Jenkins" class="review-avatar">
+                        <div class="review-author-info">
+                            <h4>Sarah Jenkins</h4>
+                            <div class="review-author-role">Design Principal</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-stars">
+                        <span class="review-star">⭐</span>
+                        <span class="review-star">⭐</span>
+                        <span class="review-star">⭐</span>
+                        <span class="review-star">⭐</span>
+                        <span class="review-star">⭐</span>
+                    </div>
+                    <p class="review-text">"GrowthSync's system for consistency is the secret sauce. I'm now getting inbound recruiter messages almost every single week."</p>
+                    <div class="review-author">
+                        <img src="https://www.figma.com/api/mcp/asset/3de5a162-b48c-4cb4-bab6-13f419189b17" alt="Michael Chen" class="review-avatar">
+                        <div class="review-author-info">
+                            <h4>Michael Chen</h4>
+                            <div class="review-author-role">Product Executive</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">GrowthSync</div>
+                <p class="footer-desc">Surgical precision for executive growth and personal branding on LinkedIn.</p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Contact</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+                <div class="footer-copyright">© 2024 GrowthSync. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Form Submission Script -->
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwof_DyxWrT_jFQ0XIj9WZI5WXoswuzkgI3EG-IqtIGUsJ8qPGXZjgUb1w9IczRcoQalg/exec';
+
+        const form = document.getElementById('auditForm');
+        const messageDiv = document.getElementById('formMessage');
+        const submitBtn = form.querySelector('.form-submit');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            // Validate
+            if (!name || !email || !phone) {
+                showMessage('Please fill in all fields', 'error');
+                return;
+            }
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+            messageDiv.textContent = 'Sending...';
+            messageDiv.classList.remove('success', 'error');
+            messageDiv.style.display = 'block';
+
+            try {
+                // Build the URL with query parameters
+                const url = SCRIPT_URL + '?' + new URLSearchParams({
+                    name: name,
+                    email: email,
+                    phone: phone
+                });
+
+                // Send request with GET method and no-cors mode
+                await fetch(url, {
+                    method: 'GET',
+                    mode: 'no-cors'
+                });
+
+                // On success (opaque response, so we can't check status)
+                showMessage('✓ Form submitted successfully! We\'ll get back to you soon.', 'success');
+                form.reset();
+
+                // Optionally scroll to message
+                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            } catch (error) {
+                showMessage('There was an error. Please try again.', 'error');
+                console.error('Error:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+            }
+        });
+
+        function showMessage(text, type) {
+            messageDiv.textContent = text;
+            messageDiv.className = 'form-message ' + type;
+            messageDiv.style.display = 'block';
+            
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 4000);
+            }
+        }
+    </script>
+</body>
+</html>
